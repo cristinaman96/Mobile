@@ -1,4 +1,4 @@
-# Mobile
+# Mobile - TV Series App 
 This app will help its users browse through shows they may be interested in watching, 
 give them a brief description of every show and also display the release date of the 
 next episodes.
