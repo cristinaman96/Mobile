@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 
 import com.example.cris.tvseriesapp.model.TVSerie;
@@ -22,6 +23,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Button button = (Button) findViewById(R.id.proposeSeries);
+        button.setOnClickListener((v)->{
+            Intent intent = new Intent(MainActivity.this, ProposeTVSeriesActivity.class);
+            startActivity(intent);
+                });
 
         populateList();
         onTVSerieSelected();
