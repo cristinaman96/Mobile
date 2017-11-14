@@ -7,38 +7,34 @@
     android:orientation="vertical"
     tools:context="com.example.cris.tvseriesapp.ProposeTVSeriesActivity">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_margin="8dp"
-        android:textSize="20dp"
-        tools:layout_editor_absoluteX="40dp"
-        tools:layout_editor_absoluteY="30dp"
-        />
-
     <EditText
         android:id="@+id/tvSeriesName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Enter the TV Series name here"
         android:layout_margin="8dp"
-        android:textSize="15dp"/>
+        android:hint="Enter the TV Series name here"
+        android:textColorLink="@android:color/holo_purple"
+        android:textSize="15dp"
+        android:textStyle="bold"
+        android:theme="@style/Base.Theme.AppCompat.Light" />
 
     <EditText
         android:id="@+id/name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Enter your name"
         android:layout_margin="8dp"
-        android:textSize="15dp"/>
+        android:hint="Enter your name"
+        android:textColorLink="@android:color/holo_purple"
+        android:textSize="15dp"
+        android:textStyle="bold"
+        android:theme="@style/Base.AlertDialog.AppCompat.Light" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:onClick="proposeTVSeries"
         android:text="Propose!"
-        android:onClick="proposeTVSeries"/>
+        android:textColorLink="@android:color/holo_purple" />
 
 </LinearLayout>

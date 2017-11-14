@@ -26,9 +26,15 @@ public class TVSerieRepository {
 
         TVSerie tvSerie3 = new TVSerie("House", "An antisocial maverick doctor who specializes in diagnostic medicine does whatever it takes to solve puzzling cases that come his way using his crack team of doctors and his wits.", R.drawable.house);
 
+        TVSerie tvSerie4 = new TVSerie("Stranger Things", "When a young boy disappears, his mother, a police chief, and his friends must confront terrifying forces in order to get him back.", R.drawable.stranger_things);
+
+        TVSerie tvSerie5 = new TVSerie("The Walking Dead", "Sheriff Deputy Rick Grimes wakes up from a coma to learn the world is in ruins, and must lead a group of survivors to stay alive.", R.drawable.the_walking_dead);
+
         tvSeriesList.add(tvSerie1);
         tvSeriesList.add(tvSerie2);
         tvSeriesList.add(tvSerie3);
+        tvSeriesList.add(tvSerie4);
+        tvSeriesList.add(tvSerie5);
 
     }
 
