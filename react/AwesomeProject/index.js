@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import { AppRegistry,
     FlatList,
     StyleSheet,
@@ -17,30 +17,29 @@ var tvSeries=[
     {
         key:'1',
         title: 'Game of Thrones',
-        description: "Nine noble families fight for control over the mythical lands of Westeros, while a forgotten race returns after being dormant for thousands of years.",
+        description: 'Nine noble families fight for control over the mythical lands of Westeros, while a forgotten race returns after being dormant for thousands of years.',
         image: require('./img/game_of_thrones.jpg')},
     {
         key:'2',
         title: 'House',
-        description: "\n" +
-        "An antisocial maverick doctor who specializes in diagnostic medicine does whatever it takes to solve puzzling cases that come his way using his crack team of doctors and his wits.",
+        description: 'An antisocial maverick doctor who specializes in diagnostic medicine does whatever it takes to solve puzzling cases that come his way using his crack team of doctors and his wits.',
         image: require('./img/house.jpg')},
     {
         key:'3',
         title: 'Sherlock',
-        description: "A modern update finds the famous sleuth and his doctor partner solving crime in 21st century London.",
+        description: 'A modern update finds the famous sleuth and his doctor partner solving crime in 21st century London',
         image: require('./img/sherlock.jpg')},
     {
         key:'4',
         title: 'Stranger Things',
-        description: "When a young boy disappears, his mother, a police chief, and his friends must confront terrifying forces in order to get him back.",
+        description: 'When a young boy disappears, his mother, a police chief, and his friends must confront terrifying forces in order to get him back.',
         image: require('./img/stranger_things.jpg')},
     {
         key:'5',
         title: 'The Walking Dead',
-        description: "Sheriff Deputy Rick Grimes wakes up from a coma to learn the world is in ruins, and must lead a group of survivors to stay alive.",
+        description: 'Sheriff Deputy Rick Grimes wakes up from a coma to learn the world is in ruins, and must lead a group of survivors to stay alive.',
         image: require('./img/the_walking_dead.jpg')},
-]
+];
 
 class TVSeriesList extends Component{
     static navigationOptions = {
@@ -49,29 +48,29 @@ class TVSeriesList extends Component{
     render(){
         const {navigate} = this.props.navigation;
         return(
-            <View>
-                <View>
-                    <Text>TV Series</Text>
+            <View style={styles.container}>
+                <View style = {styles.header}>
+                    <Text style = {styles.headerText}>TV Series</Text>
                 </View>
                 <FlatList
                     data = {tvSeries}
-                    randerItem = {
-                        // ({item}) => <ScrollView>
-                        //     <View>
-                        //         <Image source={item.image}/>
-                        //         <Text onPress = {() => navigate('Details',{tvSerie : item})}> {item.title} </Text>
-                        //     </View>
-                        // </ScrollView>
-                        ({item}) => <View> <Text>dsjbbgkaagdg</Text></View>
+                    renderItem={
+                        ({item}) => <ScrollView>
+                            <View style={styles.linearView} >
+                                <Image source={item.image}/>
+                                <Text onPress = {() => navigate('Details',{tvSerie : item})}> {item.title} </Text>
+                            </View>
+                        </ScrollView>
+                        // ({item}) => <View><Text>dsjbbgkaagdg</Text></View>
                     }
                 />
                 <View>
-                    <TouchableOpacity onPerss={() => navigate('ProposePage')}>
-                        <Text> Propose a new TV series</Text>>
+                    <TouchableOpacity style={styles.proposeButton} onPerss={() => navigate('ProposePage')}>
+                        <Text style={styles.proposeButtonText}> Propose a new TV series</Text>>
                     </TouchableOpacity>
                 </View>
             </View>
-    );
+        );
     }
 }
 
@@ -85,11 +84,11 @@ class ProposePage extends Component{
                 <TextInput onCgange = {(name) => this.setState({name})}/>
                 <ToucableOpacity>
                     <Text onPress = {() => { receiver = "man.cristina96@yahoo.com";
-                                             subject = "Proposal of a new TV series";
-                                             body = "Title: " + this.state.title + "\n"+
-                                                    "Name: " + this.state.name;
-                                             all = "mailto:" + receiver + "?subject=" + subject + "&body=" + body;
-                                             Linking.openURL(all)}}> Propose </Text>
+                        subject = "Proposal of a new TV series";
+                        body = "Title: " + this.state.title + "\n"+
+                            "Name: " + this.state.name;
+                        all = "mailto:" + receiver + "?subject=" + subject + "&body=" + body;
+                        Linking.openURL(all)}}> Propose </Text>
                 </ToucableOpacity>
             </View>
         );
@@ -123,19 +122,19 @@ class Details extends Component{
 
 const NavigationApp = StackNavigator({
     Home: {screen: TVSeriesList},
-    Page2: {screen: ProposePage},
+    ProposePage: {screen: ProposePage},
     Details: {screen: Details}
 });
 
 
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+    container: {
+        flex: 1,
+        backgroundColor: '#fff',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
     header:{
         backgroundColor: '#E91E63',
         alignItems: 'center',
@@ -174,6 +173,18 @@ const styles = StyleSheet.create({
         resizeMode: 'contain',
         marginBottom:28,
         marginTop:28
+    },
+    proposeButton:{
+        backgroundColor: '#E91E63',
+        //borderRadius: 30,
+        borderColor: '#ccc',
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginBottom:45
+    },
+    proposeButtonText: {
+        color:'#fff',
+        fontSize:24,
     }
 
 });
@@ -181,7 +192,6 @@ const styles = StyleSheet.create({
 export default class App extends React.Component {
     render() {
         return <NavigationApp/>;
-
     }
 }
 
