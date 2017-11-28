@@ -45,7 +45,11 @@ var tvSeries=[
 class TVSeriesList extends Component{
     static navigationOptions = {
         header:null,
+<<<<<<< HEAD
     };
+=======
+    }
+>>>>>>> 0f777a290025ea9747b2e3795587c0644e52caeb
     render(){
         const {navigate} = this.props.navigation;
         return(
@@ -56,6 +60,7 @@ class TVSeriesList extends Component{
                 <FlatList
                     data = {tvSeries}
                     randerItem = {
+<<<<<<< HEAD
                         // ({item}) => <ScrollView>
                         //     <View>
                         //         <Image source={item.image}/>
@@ -63,6 +68,14 @@ class TVSeriesList extends Component{
                         //     </View>
                         // </ScrollView>
                         ({item}) => <View> <Text>dsjbbgkaagdg</Text></View>
+=======
+                        ({item}) => <ScrollView>
+                            <View>
+                                <Image source={item.image}/>
+                                <Text onPress = {() => navigate('Details',{tvSerie : item})}> {item.title} </Text>
+                            </View>
+                        </ScrollView>
+>>>>>>> 0f777a290025ea9747b2e3795587c0644e52caeb
                     }
                 />
                 <View>
@@ -73,6 +86,7 @@ class TVSeriesList extends Component{
             </View>
     );
     }
+<<<<<<< HEAD
 }
 
 class ProposePage extends Component{
@@ -96,6 +110,31 @@ class ProposePage extends Component{
     }
 }
 
+=======
+}
+
+class ProposePage extends Component{
+    render() {
+        return (
+            <View>
+                <Text> Title: </Text>
+                <TextInput onChangeText = {(title) => this.setState({title})}/>
+                <Text> Name: </Text>
+                <TextInput onCgange = {(name) => this.setState({name})}/>
+                <ToucableOpacity>
+                    <Text onPress = {() => { receiver = "man.cristina96@yahoo.com";
+                                             subject = "Proposal of a new TV series";
+                                             body = "Title: " + this.state.title + "\n"+
+                                                    "Name: " + this.state.name;
+                                             all = "mailto:" + receiver + "?subject=" + subject + "&body=" + body;
+                                             Linking.openURL(all)}}> Propose </Text>
+                </ToucableOpacity>
+            </View>
+        );
+    }
+}
+
+>>>>>>> 0f777a290025ea9747b2e3795587c0644e52caeb
 class Details extends Component{
     static navigationOptions = {
         header:null,
@@ -162,12 +201,35 @@ const styles = StyleSheet.create({
         left: 0,
         right: 0,
     },
+<<<<<<< HEAD
 
+=======
+    reserveButton: {
+        backgroundColor: '#E91E63',
+        //borderRadius: 30,
+        borderColor: '#ccc',
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginBottom:45
+    },
+    reserveButtonText: {
+        color:'#fff',
+        fontSize:24,
+    },
+>>>>>>> 0f777a290025ea9747b2e3795587c0644e52caeb
     linearView: {
         flexDirection:'row',
         padding:8,
     },
+<<<<<<< HEAD
 
+=======
+    bookTitle:{
+        color:'#E91E63',
+        fontSize:25,
+        textAlign:'center',
+    },
+>>>>>>> 0f777a290025ea9747b2e3795587c0644e52caeb
     detailedImage: {
         height:220,
         width: 200,
