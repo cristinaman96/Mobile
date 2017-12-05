@@ -12,9 +12,9 @@ import { AppRegistry,
     TouchableOpacity,
     ScrollView,
     Image,
-    Alert,
     TextInput,
-    Linking} from 'react-native';
+    Linking,
+    Button} from 'react-native';
 import {StackNavigator} from 'react-navigation'
 
 
@@ -52,10 +52,12 @@ class TVSeriesList extends Component{
     // static navigationOptions = {
     //     header:null,
     // };
+
+    // onPress = () => {navigate('ProposePage')}
     render(){
         const {navigate} = this.props.navigation;
         return(
-            <View style={styles.container}>
+            <View style = {styles.container}>
                 <View style = {styles.header}>
                     <Text style = {styles.headerText}>TV Series</Text>
                 </View>
@@ -72,8 +74,8 @@ class TVSeriesList extends Component{
                     }
                 />
                 <View style = {styles.footer}>
-                    <TouchableOpacity style={styles.proposeButton} onPress={() => navigate('ProposePage')}>
-                        <Text style={styles.proposeButtonText}> Propose a new TV series</Text>>
+                    <TouchableOpacity style={styles.proposeButton} onPress = {() => navigate('ProposePage')}>
+                        <Text style={styles.proposeButtonText}> Propose a new TV series</Text>
                     </TouchableOpacity>
                 </View>
             </View>
@@ -132,12 +134,12 @@ class ProposePage extends Component{
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#E91E63',
+        backgroundColor: '#01DF01',
         alignItems: 'center',
         justifyContent: 'center',
     },
     header:{
-        backgroundColor: '#E91E63',
+        backgroundColor: '#01DF01',
         alignItems: 'center',
         justifyContent: 'center',
         borderBottomWidth: 10,
@@ -176,7 +178,7 @@ const styles = StyleSheet.create({
         marginTop:28
     },
     proposeButton:{
-        backgroundColor: '#E91E63',
+        backgroundColor: '#01DF01',
         //borderRadius: 30,
         borderColor: '#ccc',
         alignItems: 'center',
@@ -203,4 +205,4 @@ export default class App extends Component<> {
 }
 
 // skip this line if using Create React Native App
-AppRegistry.registerComponent('AwesomeProject', () => Bananas);
+AppRegistry.registerComponent('AwesomeProject', () => App);
