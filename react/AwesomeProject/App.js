@@ -16,7 +16,7 @@ import { AppRegistry,
     Linking,
     Button} from 'react-native';
 import {StackNavigator} from 'react-navigation'
-
+import TVSeries from "./TVSeries"
 
 
 var tvSeries=[
@@ -49,9 +49,6 @@ var tvSeries=[
 
 
 class TVSeriesList extends Component{
-    // static navigationOptions = {
-    //     header:null,
-    // };
 
     // onPress = () => {navigate('ProposePage')}
     render(){
@@ -193,7 +190,7 @@ const styles = StyleSheet.create({
 });
 
 const NavigationApp = StackNavigator({
-    Home: {screen: TVSeriesList},
+    Home: {screen: TVSeries},
     ProposePage: {screen: ProposePage},
     Details: {screen: Details}}
     );

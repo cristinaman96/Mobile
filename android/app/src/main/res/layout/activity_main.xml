@@ -14,7 +14,7 @@
         android:text="TV Series"
         android:textSize="25dp"
         android:layout_margin="8dp"
-         />
+        />
 
     <ListView
         android:layout_width="wrap_content"

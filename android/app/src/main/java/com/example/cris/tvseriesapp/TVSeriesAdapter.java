@@ -27,7 +27,6 @@ public class TVSeriesAdapter extends ArrayAdapter<TVSerie> {
         try {
             this.activity = activity;
             this.tvSeries = tvSerieList;
-
             inflater = activity.getLayoutInflater();
         }catch (Exception e){}
     }
@@ -76,5 +75,11 @@ public class TVSeriesAdapter extends ArrayAdapter<TVSerie> {
         return view;
     }
 
+    public void updateList(List<TVSerie> newList){
+        tvSeries.clear();
+        tvSeries = newList;
+//        System.out.println("LIIIISSSSTTTTTTTT " + tvSeries);
+        this.notifyDataSetChanged();
+    }
 
 }
