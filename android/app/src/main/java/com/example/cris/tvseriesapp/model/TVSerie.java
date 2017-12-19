@@ -30,7 +30,7 @@ public class TVSerie {
 //    }
 
     public TVSerie() {
-
+        image = 0;
     }
     public int getTvsid() {
         return tvsid;

@@ -23,7 +23,7 @@
         </activity>
         <activity android:name=".DetailActivity" />
         <activity android:name=".ProposeTVSeriesActivity" />
-
+        <activity android:name=".AddTVSeries"/>
 
     </application>
 

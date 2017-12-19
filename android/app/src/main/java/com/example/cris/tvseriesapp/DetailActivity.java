@@ -37,13 +37,14 @@ public class DetailActivity extends AppCompatActivity {
 
 
     public void save(View view) {
-        System.out.println("mare buton de save!!!");
+//        System.out.println("mare buton de save!!!");
         TextView titleView = (TextView) findViewById(R.id.title);
         TextView descriptionView = (TextView) findViewById(R.id.description);
         String title = titleView.getText().toString();
         String description = descriptionView.getText().toString();
 
         Intent intent = new Intent();
+        intent.putExtra("what", "save");
         intent.putExtra("id", id);
         intent.putExtra("title", title);
         intent.putExtra("description", description);
@@ -52,5 +53,22 @@ public class DetailActivity extends AppCompatActivity {
         setResult(RESULT_OK, intent);
         finish();
 
+    }
+
+    public void delete(View view) {
+        TextView titleView = (TextView) findViewById(R.id.title);
+        TextView descriptionView = (TextView) findViewById(R.id.description);
+        String title = titleView.getText().toString();
+        String description = descriptionView.getText().toString();
+
+        Intent intent = new Intent();
+        intent.putExtra("what", "delete");
+        intent.putExtra("id", id);
+        intent.putExtra("title", title);
+        intent.putExtra("description", description);
+        intent.putExtra("image", image);
+
+        setResult(RESULT_OK, intent);
+        finish();
     }
 }

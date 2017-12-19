@@ -22,11 +22,24 @@
         android:id="@+id/listView"
         android:dividerHeight="10.0sp"
         />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="bottom">
+        <Button
+            android:id="@+id/proposeSeries"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Propose TV Series"
+            android:textAllCaps="false"/>
 
-    <Button
-        android:id="@+id/proposeSeries"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Propose TV Series"
-        android:textAllCaps="false"/>
+        <Button
+            android:id="@+id/addSeries"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add a TV Series"
+            android:textAllCaps="false"/>
+    </LinearLayout>
+
+
 </LinearLayout>

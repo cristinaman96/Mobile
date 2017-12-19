@@ -114,5 +114,9 @@ public class TVSerieRepository {
 //        }
         db.TVSeriesDao().update(tvSerie);
     }
+
+    public void delete(TVSerie tvSerie){
+        db.TVSeriesDao().delete(tvSerie);
+    }
 }
 
