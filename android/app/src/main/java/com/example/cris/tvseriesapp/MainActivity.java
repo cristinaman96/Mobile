@@ -89,10 +89,10 @@ public class MainActivity extends AppCompatActivity {
                     System.out.println("New tvserieee  " + tvSerie);
                     tvSerieRepository.updateTVSeries(tvSerie);
 //                    System.out.println(tvSerieRepository.getTvSeriesList());
-                    tvSeriesAdapter.updateList(tvSerieRepository.getTvSeriesList());
+//                    tvSeriesAdapter.updateList(tvSerieRepository.getTvSeriesList());
 //                System.out.println(tvSerieRepository.getTvSeriesList());
 
-//                tvSeriesAdapter.notifyDataSetChanged();
+                   tvSeriesAdapter.notifyDataSetChanged();
                 }
                 else
                     if (data.getStringExtra("what").equals("delete")) {
@@ -109,6 +109,8 @@ public class MainActivity extends AppCompatActivity {
                         tvSerieRepository.delete(tvSerie);
 //                        System.out.println(tvSerieRepository.getTvSeriesList());
                         tvSeriesAdapter.updateList(tvSerieRepository.getTvSeriesList());
+//                        tvSeriesAdapter.notifyDataSetChanged();
+
                     }
 
                 }
@@ -119,6 +121,7 @@ public class MainActivity extends AppCompatActivity {
                 String description = data.getStringExtra("description");
                 tvSerieRepository.insert(title,description);
                 tvSeriesAdapter.updateList(tvSerieRepository.getTvSeriesList());
+
             }
         }
     }

@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_margin="8dp"
-        android:text="Add new book"
+        android:text="Add new a TV seies"
         android:textSize="20dp" />
 
     <EditText
