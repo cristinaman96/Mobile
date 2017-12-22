@@ -61,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra("id", tvSerieRepository.findOne(position).getTvsid());
                 intent.putExtra("title", tvSerieRepository.findOne(position).getTitle());
                 intent.putExtra("description", tvSerieRepository.findOne(position).getDescription());
+                intent.putExtra("rating", tvSerieRepository.findOne(position).getRating());
 //                System.out.println("DESCRIPTION" + tvSeries.get(position).getDescription() );
                 intent.putExtra("image", tvSerieRepository.findOne(position).getImage());
                 startActivityForResult(intent,1);
@@ -80,6 +81,7 @@ public class MainActivity extends AppCompatActivity {
                     int id = data.getIntExtra("id", 0);
                     String title = data.getStringExtra("title");
                     String description = data.getStringExtra("description");
+                    int rating = data.getIntExtra("rating", 0);
                     int image = data.getIntExtra("image", 0);
                     TVSerie tvSerie = new TVSerie();
                     tvSerie.setTvsid(id);
@@ -99,6 +101,7 @@ public class MainActivity extends AppCompatActivity {
                         int id = data.getIntExtra("id", 0);
                         String title = data.getStringExtra("title");
                         String description = data.getStringExtra("description");
+                        int rating = data.getIntExtra("rating", 0);
                         int image = data.getIntExtra("image", 0);
                         TVSerie tvSerie = new TVSerie();
                         tvSerie.setTvsid(id);
@@ -119,7 +122,8 @@ public class MainActivity extends AppCompatActivity {
             if(resultCode == RESULT_OK){
                 String title = data.getStringExtra("title");
                 String description = data.getStringExtra("description");
-                tvSerieRepository.insert(title,description);
+                int rating = data.getIntExtra("rating",0);
+                tvSerieRepository.insert(title,description,rating);
                 tvSeriesAdapter.updateList(tvSerieRepository.getTvSeriesList());
 
             }

@@ -20,6 +20,9 @@ public class TVSerie {
     @ColumnInfo(name = "description")
     private String description;
 
+    @ColumnInfo(name = "rating")
+    private Integer rating;
+
     @ColumnInfo(name = "image")
     private Integer image;
 
@@ -30,6 +33,7 @@ public class TVSerie {
 //    }
 
     public TVSerie() {
+        rating = 0;
         image = 0;
     }
     public int getTvsid() {
@@ -39,6 +43,15 @@ public class TVSerie {
     public void setTvsid(int tvsid) {
         this.tvsid = tvsid;
     }
+
+    public Integer getRating() {
+        return rating;
+    }
+
+    public void setRating(Integer rating) {
+        this.rating = rating;
+    }
+
     public String getTitle() {
         return title;
     }

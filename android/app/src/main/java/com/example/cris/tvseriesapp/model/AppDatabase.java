@@ -1,9 +1,12 @@
 package com.example.cris.tvseriesapp.model;
 
+import android.arch.persistence.db.SupportSQLiteDatabase;
 import android.arch.persistence.room.Database;
 import android.arch.persistence.room.Room;
 import android.arch.persistence.room.RoomDatabase;
+import android.arch.persistence.room.migration.Migration;
 import android.content.Context;
+import android.support.annotation.NonNull;
 
 import com.example.cris.tvseriesapp.R;
 
@@ -11,10 +14,17 @@ import com.example.cris.tvseriesapp.R;
  * Created by Cris on 12/8/2017.
  */
 
-@Database(entities = {TVSerie.class}, version = 1)
+@Database(entities = {TVSerie.class}, version = 2)
 public abstract class AppDatabase extends RoomDatabase {
     public abstract TVSeriesDao TVSeriesDao();
 
+    public static final Migration MIGRATION_1_2 = new Migration(1,2) {
+        @Override
+        public void migrate(@NonNull SupportSQLiteDatabase database) {
+            database.execSQL("ALTER TABLE 'tvseries' ADD COLUMN 'rating' INTEGER");
+
+        }
+    };
 //    private static AppDatabase INSTANCE;
 //    public static AppDatabase getAppDatabase(Context context){
 //        if (INSTANCE == null){
@@ -26,10 +36,7 @@ public abstract class AppDatabase extends RoomDatabase {
 //    }
 //    private void populateInitialData(){
 //        if (TVSeriesDao().count() == 0){
-//            TVSerie tvSerie1 = new TVSerie();
-//            tvSerie1.setTitle("The Crown");
-//            tvSerie1.setDescription("Follows the political rivalries and romance of Queen Elizabeth II's reign and the events that shaped the second half of the 20th century.");
-//            tvSerie1.setImage(R.drawable.the_crown);
+//
 //            beginTransaction();
 //            try {
 //                TVSeriesDao().insert(tvSerie1);
