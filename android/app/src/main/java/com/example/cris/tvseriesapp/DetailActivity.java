@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.components.Legend;
@@ -23,6 +24,7 @@ public class DetailActivity extends AppCompatActivity {
     int id;
     int rating;
     int image;
+    String userRole;
 
 
     @Override
@@ -31,6 +33,7 @@ public class DetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_detail);
 
 
+        userRole = getIntent().getStringExtra("role");
         id = getIntent().getIntExtra("id",0);
         String title = getIntent().getStringExtra("title");
         String description = getIntent().getStringExtra("description");
@@ -125,42 +128,51 @@ public class DetailActivity extends AppCompatActivity {
     }
 
     public void delete(View view) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage("Are you sure you want to delete this TV series?");
-        builder.setCancelable(true);
 
-        builder.setPositiveButton("Yes",
-                new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        TextView titleView = (TextView) findViewById(R.id.title);
-                        TextView descriptionView = (TextView) findViewById(R.id.description);
-                        String title = titleView.getText().toString();
-                        String description = descriptionView.getText().toString();
+        if (userRole.equals("user")){
+            Toast.makeText(this, "Unavailable in user mode!", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if (userRole.equals("admin")) {
 
-                        Intent intent = new Intent();
-                        intent.putExtra("what", "delete");
-                        intent.putExtra("id", id);
-                        intent.putExtra("title", title);
-                        intent.putExtra("description", description);
-                        intent.putExtra("rating", rating);
-                        intent.putExtra("image", image);
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
-                        setResult(RESULT_OK, intent);
-                        finish();
+            builder.setMessage("Are you sure you want to delete this TV series?");
+            builder.setCancelable(true);
+
+            builder.setPositiveButton("Yes",
+                    new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            TextView titleView = (TextView) findViewById(R.id.title);
+                            TextView descriptionView = (TextView) findViewById(R.id.description);
+                            String title = titleView.getText().toString();
+                            String description = descriptionView.getText().toString();
+
+                            Intent intent = new Intent();
+                            intent.putExtra("what", "delete");
+                            intent.putExtra("id", id);
+                            intent.putExtra("title", title);
+                            intent.putExtra("description", description);
+                            intent.putExtra("rating", rating);
+                            intent.putExtra("image", image);
+
+                            setResult(RESULT_OK, intent);
+                            finish();
+                        }
                     }
-                }
-                );
-        builder.setNegativeButton("No",
-                new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        dialogInterface.cancel();
-                }
-        });
+            );
+            builder.setNegativeButton("No",
+                    new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            dialogInterface.cancel();
+                        }
+                    });
 
-        AlertDialog alertDialog = builder.create();
-        alertDialog.show();
+            AlertDialog alertDialog = builder.create();
+            alertDialog.show();
+        }
 
     }
 

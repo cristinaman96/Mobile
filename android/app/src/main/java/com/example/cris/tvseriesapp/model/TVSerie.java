@@ -4,26 +4,29 @@ import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
 
+import com.google.firebase.database.IgnoreExtraProperties;
+
 /**
  * Created by Cris on 11/6/2017.
  */
-@Entity(tableName = TVSerie.TABLE_NAME)
+//@Entity(tableName = TVSerie.TABLE_NAME)
+@IgnoreExtraProperties
 public class TVSerie {
-    public static final String TABLE_NAME = "tvseries";
+//    public static final String TABLE_NAME = "tvseries";
 
-    @PrimaryKey(autoGenerate = true)
+//    @PrimaryKey(autoGenerate = true)
     private int tvsid;
 
-    @ColumnInfo(name = "title")
+//    @ColumnInfo(name = "title")
     private String title;
 
-    @ColumnInfo(name = "description")
+//    @ColumnInfo(name = "description")
     private String description;
 
-    @ColumnInfo(name = "rating")
+//    @ColumnInfo(name = "rating")
     private Integer rating;
 
-    @ColumnInfo(name = "image")
+//    @ColumnInfo(name = "image")
     private Integer image;
 
 //    public TVSerie(String title, String description, Integer image) {

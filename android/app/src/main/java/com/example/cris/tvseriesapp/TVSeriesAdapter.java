@@ -76,7 +76,9 @@ public class TVSeriesAdapter extends ArrayAdapter<TVSerie> {
     }
 
     public void updateList(List<TVSerie> newList){
-        tvSeries.clear();
+//        tvSeries.clear();
+//        for (TVSerie tvs : newList)
+//            tvSeries.add(tvs);
         tvSeries = newList;
 //        System.out.println("LIIIISSSSTTTTTTTT " + tvSeries);
         this.notifyDataSetChanged();
