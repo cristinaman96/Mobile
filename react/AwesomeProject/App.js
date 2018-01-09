@@ -21,6 +21,8 @@ import {ProposeTVSeries} from "./ProposeTVSeries";
 import {Details} from "./Details";
 import {AddTVSeries} from "./AddTVSeries";
 import {Login} from "./Login";
+// import {Chart} from './Charts'
+
 
 //
 // var tvSeries=[
@@ -198,8 +200,11 @@ const NavigationApp = StackNavigator({
     TVSeries: {screen: TVSeries},
     ProposeTVSeries: {screen: ProposeTVSeries},
     Details: {screen: Details},
-    AddTVSeries: {screen: AddTVSeries}}
-    );
+    AddTVSeries: {screen: AddTVSeries},
+    // Charts: {screen: Chart}
+}
+
+);
 
 export default class App extends Component<> {
     render() {

@@ -1,9 +1,5 @@
 package com.example.cris.tvseriesapp.repository;
 
-import android.arch.persistence.room.Room;
-import android.content.Context;
-import android.content.Intent;
-
 import com.example.cris.tvseriesapp.MainActivity;
 import com.example.cris.tvseriesapp.R;
 //import com.example.cris.tvseriesapp.model.AppDatabase;

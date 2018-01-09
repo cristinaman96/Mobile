@@ -12,8 +12,11 @@ import {
     processColor,
 
 } from 'react-native';
-import {StackNavigator, SafeAreaView} from 'react-navigation';
 import {firebaseApp} from './TVSeries'
+import {NotificationsAndroid} from 'react-native-notifications';
+import { ProgressCircle }  from 'react-native-svg-charts'
+
+
 
 
 export class Details extends Component{
@@ -25,6 +28,13 @@ export class Details extends Component{
         const items = firebaseApp.database().ref().child('tvseries');
         console.log("@@@@@@@@@@@@" + index + " " + description);
         items.child(index).child("tvserie").child("description").set(description);
+
+        NotificationsAndroid.localNotification({
+            title: "TV Series",
+            body: "Thank you for accessing our application!",
+            extra: "data"
+        });
+
     }
 
 
@@ -32,6 +42,8 @@ export class Details extends Component{
         const {navigate} = this.props.navigation;
         const {params} = this.props.navigation.state;
         const {goBack} = this.props.navigation;
+
+
 
         var tvserie = params ? params.tvserie : "<undefined>";
         var key = params? params.key : "<undefined>";
@@ -45,7 +57,15 @@ export class Details extends Component{
                 }}>
                     <Text style={styles.TVSeriesTitle}> {tvserie.name} </Text>
                     <Image source={tvserie.image}/>
-                    <Text style = {{height: 160, width: 350, marginTop:10 }}> {tvserie.rating} </Text>
+                    <Text style = {{height: 40, width: 350, marginTop:10, fontSize:20, alignItems: 'center',}}> {tvserie.rating} </Text>
+
+
+                    <ProgressCircle
+                        style={ { height: 50, width: 50} }
+                        progress={ 0.7 }
+                        progressColor={'rgb(134, 65, 244)'}
+                    />
+
 
                     <ScrollView>
                         <TextInput style={{height: 160, width: 350, marginTop:10 }} multiline={true}onChangeText={(text) => this.setState({newDescription: text})}> {tvserie.description} </TextInput>
@@ -65,6 +85,10 @@ export class Details extends Component{
                     }>
                         <Text style={styles.proposeButtonText}>Save changes </Text>
                     </TouchableOpacity>
+                    {/*<TouchableOpacity style={styles.addButton} onPress={() =>*/}
+                        {/*navigate('Charts',{name:tvserie.name})}>*/}
+                        {/*<Text style={styles.proposeButtonText}> See Chart </Text>*/}
+                    {/*</TouchableOpacity>*/}
                 </View>
             </View>
         );
@@ -101,19 +125,16 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         //marginBottom:-30,
         top:20,
-        flexDirection:'row',
+       // flexDirection:'row',
         left: 0,
         right: 0,
     },
     proposeButton: {
         backgroundColor: '#01DF01',
-        //borderRadius: 30,
         borderColor: '#ccc',
-        //alignItems: 'center',
+        alignItems: 'center',
         justifyContent: 'center',
-        marginLeft:50,
         marginBottom:45,
-        marginRight:7
     },
     deleteButton: {
         backgroundColor: '#01DF01',
@@ -159,5 +180,16 @@ const styles = StyleSheet.create({
         resizeMode: 'contain',
         marginBottom:28,
         marginTop:28
-    }
+    },
+    container2: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: 'white',
+    },
+    chart: {
+        width: 200,
+        height: 200,
+    },
+
 });

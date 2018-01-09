@@ -23,6 +23,10 @@
     "firebase": "^4.8.1",
     "react": "16.0.0",
     "react-native": "^0.50.0",
+
+    "react-native-charts-wrapper": "^0.4.1",
+    "react-native-notifications": "^1.1.17",
+    "react-native-push-notification": "^3.0.2",
     "react-native-storage": "^0.2.2",
     "react-navigation": "^1.0.0-beta.19"
   }

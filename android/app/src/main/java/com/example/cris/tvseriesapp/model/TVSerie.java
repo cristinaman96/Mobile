@@ -1,8 +1,8 @@
 package com.example.cris.tvseriesapp.model;
-
-import android.arch.persistence.room.ColumnInfo;
-import android.arch.persistence.room.Entity;
-import android.arch.persistence.room.PrimaryKey;
+//
+//import android.arch.persistence.room.ColumnInfo;
+//import android.arch.persistence.room.Entity;
+//import android.arch.persistence.room.PrimaryKey;
 
 import com.google.firebase.database.IgnoreExtraProperties;
 

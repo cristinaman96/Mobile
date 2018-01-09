@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import {View, Text, ScrollView, FlatList, Image,StyleSheet,Alert, TouchableOpacity,   RefreshControl} from 'react-native'
+import {NotificationsAndroid} from 'react-native-notifications';
+
 
 export const firebase = require('firebase');
 
@@ -82,6 +84,8 @@ export class TVSeries extends Component{
                         key: child.key});
             });
             console.log(items);
+
+
             this.setState({newtvseries: items});
             this.setState({loading:false});
         });
