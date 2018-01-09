@@ -1,41 +1,68 @@
-import React, {Component} from 'react';
-import {
-    Text,
-    View,
-    TouchableOpacity,
-    TextInput,
-    Linking,
-    StyleSheet
-} from 'react-native';
+import React, { Component } from 'react';
+import {View, Text, Button, TextInput, StyleSheet, ActivityIndicator} from 'react-native';
+import firebase from 'firebase';
+
+export class Login extends Component{
+    state = {
+        email:'',
+        password:'',
+        error:''
+    };
+
+    render(){
+        const {navigate} = this.props.navigation;
+        return(
+          <View>
+              <View style={styles.header}>
+                  <Text style={styles.headerText}> TV Series</Text>
+              </View>
+
+              <TextInput
+                  label='Enter Email Address: '
+                  placeholder='email'
+                  value={this.state.email}
+                  onChangeText={email => this.setState({ email })}
+              />
+              <TextInput
+                  label='Password: '
+                  autoCorrect={false}
+                  placeholder='*****'
+                  secureTextEntry
+                  value={this.state.password}
+                  onChangeText={password => this.setState({ password })}
+              />
+
+              <Text style={styles.errorTextStyle}>{this.state.error}</Text>
 
 
+              <Button style={styles.proposeButton} color="#E91E63" onPress={ () => {
+                  const { email, password } = this.state;
+                  firebase.auth().signInWithEmailAndPassword(email, password)
+                      .then(() => { this.setState({ error: '', email:"", password:"" });navigate('TVSeries')})
+                      .catch(() => { console.log("!!!!!!!!!!!!!!")
+                          this.setState({ error: 'Authentication failed.'});
+                      });
+                  }
+              }
+                      title="Log in" />
 
-export class ProposeTVSeries extends Component{
-    render() {
-        return (
-            <View>
-                <Text> Title: </Text>
-                <TextInput onChangeText = {(title) => this.setState({title})}/>
-                <Text> Name: </Text>
-                <TextInput onCgange = {(name) => this.setState({name})}/>
-                <TouchableOpacity   style={styles.proposeButton} >
-                    <Text  style={styles.proposeButtonText} onPress = {() => { receiver = "man.cristina96@yahoo.com";
-                        subject = "Proposal of a new TV series";
-                        body = "Title: " + this.state.title + "\n"+
-                               "Name: " + this.state.name;
-                        all = "mailto:" + receiver + "?subject=" + subject + "&body=" + body;
-                        Linking.openURL(all)}}> Propose </Text>
-                </TouchableOpacity >
-            </View>
+          </View>
         );
     }
 }
+
 
 const styles = StyleSheet.create({
     container: {
         //flex: 1,
         height:650
         //paddingTop: 22
+    },
+    errorTextStyle: {
+        color: '#e69e35',
+        alignSelf: 'center',
+        paddingTop: 10,
+        paddingBottom: 10
     },
     header:{
         backgroundColor: '#01DF01',
@@ -121,5 +148,3 @@ const styles = StyleSheet.create({
         marginTop:28
     }
 });
-
-

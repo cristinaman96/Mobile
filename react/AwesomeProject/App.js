@@ -16,9 +16,11 @@ import { AppRegistry,
     Linking,
     Button} from 'react-native';
 import {StackNavigator} from 'react-navigation'
-import TVSeries from "./TVSeries"
+import {TVSeries} from "./TVSeries"
 import {ProposeTVSeries} from "./ProposeTVSeries";
 import {Details} from "./Details";
+import {AddTVSeries} from "./AddTVSeries";
+import {Login} from "./Login";
 
 //
 // var tvSeries=[
@@ -192,9 +194,11 @@ import {Details} from "./Details";
 // });
 
 const NavigationApp = StackNavigator({
-    Home: {screen: TVSeries},
-    ProposePage: {screen: ProposeTVSeries},
-    Details: {screen: Details}}
+    Home: {screen: Login},
+    TVSeries: {screen: TVSeries},
+    ProposeTVSeries: {screen: ProposeTVSeries},
+    Details: {screen: Details},
+    AddTVSeries: {screen: AddTVSeries}}
     );
 
 export default class App extends Component<> {
